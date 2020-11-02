@@ -1,11 +1,13 @@
 import React from 'react';
 
-const Github = () => {
-    return(
-        <>
-        <h2>component Github</h2>
-        </>
-    )
+class Github extends React.Component {
+    render() {
+        return(
+            <>
+                <h2>component Github</h2>
+            </>
+        )
+    }
 }
 
 export default Github;
