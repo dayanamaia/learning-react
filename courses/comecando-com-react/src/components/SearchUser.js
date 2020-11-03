@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import GitHubUserService from '/src/services/GitHubUserService';
 
 const SearchUser = () => {
+	const [userName, setUserName] = useState('');
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(e);
+
+		if (userName !== '') {
+			GitHubUserService.getByUserName(userName).then((response) => {
+				console.log(response);
+			});
+		}
+		
+		setUserName('');
 	}
 
 	return(
@@ -17,7 +27,9 @@ const SearchUser = () => {
 						<input
 						type="text"
 						className="form-control"
-						placeholder="Ex: matheusml"
+						placeholder="Ex.: @dayanamaia"
+						value={userName}
+						onChange={(e) => setUserName(e.target.value)}
 						/>
 					</div>
 					<button type="submit" className="btn btn-primary">
